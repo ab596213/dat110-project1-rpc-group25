@@ -12,16 +12,10 @@ public class Message {
 		
 		// TODO - START
 		
-		
-		//--burger--
-		if (data != null && data.length < 128) {
+		if (data != null & data.length < 128) {
 			this.data = data;
-		}
-		
-		//----
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.constructor("Message"));
+		} else
+			return;
 			
 		// TODO - END
 	}
