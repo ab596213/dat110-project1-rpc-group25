@@ -36,16 +36,18 @@ public class MessageConnection {
 
 		byte[] data;
 		
-		// TODO - START
 		// encapsulate the data contained in the Message and write to the output stream
+		
 		data = MessageUtils.encapsulate(message);
 		try {
+			
 			outStream.write(data);
 			outStream.flush();
+			
 		} catch (IOException e) {
+			System.out.println("OutputStream failed: " + e.getMessage());
 			e.printStackTrace();
 		}
-		
 			
 		// TODO - END
 
@@ -59,13 +61,16 @@ public class MessageConnection {
 		// TODO - START
 		// read a segment from the input stream and decapsulate data into a Message
 		try {
-			data = inStream.readAllBytes();
+			
+			data = inStream.readNBytes(128);
+		
 		} catch (IOException e) {
+			System.out.println("InputStream failed: " + e.getMessage());
 			e.printStackTrace();
 		}
 		
 		message = MessageUtils.decapsulate(data);
-
+		
 		// TODO - END
 		
 		return message;
